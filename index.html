@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+   
+    <title>Jackie's Guessing Game</title>
+
+    <style>
+body {
+    background-image: url(http://www.trendycrunch.com/wp-content/uploads/2017/08/psychic2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    text-align: center;
+    background-color: transparent;
+    color: #ffffff;
+}
+.jumbotron{
+    background-color: transparent;
+}
+h1 {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Lobster Two', cursive;
+
+}
+.row {
+    list-style-type: none;
+}
+    </style>
+    <script>
+        var compChoices = ("abcdefghijklmnopqrstuvwxyz").split("");
+
+        var wins = 0;
+        var losses = 0;
+        var guesses = 10;
+            
+            var computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+
+            console.log(computerGuess);
+
+        document.onkeypress = function(event){
+            var userGuess = event.key;
+
+            console.log(userGuess);
+            
+            
+                if (userGuess === computerGuess) {
+                    wins++;
+                }
+                else {
+                    guesses--;
+                }
+
+                if(guesses === 0){
+                    losses++;
+                }
+
+            }
+
+    </script>
+
+
+</head>
+<body>
+    <div class="jumbotron" id="jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Guess what letter I'm thinking!</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3">
+                <li>
+                    <ul>
+                        <div id="wins"></div>
+                    </ul>
+                    <ul>
+                        <div id="losses"></div>
+                    </ul>
+                    <ul>
+                        <div id="guesses"></div>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        
+        document.getElementById('wins').innerHTML="Wins: "+wins;
+        document.getElementById('losses').innerHTML="Losses: " + losses;
+        document.getElementById('guesses').innerHTML="Guesses: " + guesses;    
+
+    </script>
+</body>
+</html>
