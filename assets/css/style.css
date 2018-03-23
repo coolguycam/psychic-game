@@ -1,0 +1,23 @@
+body {
+    background-image: url(http://www.trendycrunch.com/wp-content/uploads/2017/08/psychic2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+}
+.container{
+    background-color: transparent;
+    color: #ffffff;
+}
+.jumbotron{
+    background-color: transparent;
+}
+h1 {
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Lobster Two', cursive;
+
+}
+.row {
+    list-style-type: none;
+}

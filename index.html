@@ -6,103 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <link href="assets/css/reset.css" type="text/stylesheet">
+    <link href="assets/css/style.css" type="text/stylesheet">
    
     <title>Jackie's Guessing Game</title>
-
-    <style>
-body {
-    background-image: url(http://www.trendycrunch.com/wp-content/uploads/2017/08/psychic2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: fixed;
-}
-.container{
-    background-color: transparent;
-    color: #ffffff;
-}
-.jumbotron{
-    background-color: transparent;
-}
-h1 {
-    width: 100%;
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Lobster Two', cursive;
-
-}
-.row {
-    list-style-type: none;
-}
-    </style>
-    <script>
-        var alphabet = ("abcdefghijklmnopqrstuvwxyz");
-        var compChoices = alphabet.split("");
-
-        var wins = 0;
-        var losses = 0;
-        var guesses = 10;
-        var soFar = [];
-        var userGuess = null;
-
-        
-            
-        var computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
-        console.log(computerGuess);  
-              
-
-        document.onkeypress = function(event){
-            
-            
-            
-            var userGuess = event.key;
-            
-            console.log(userGuess);
-
-            
-            if (soFar.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess)) {
-                soFar[soFar.length]=userGuess;
-            }
-
-            if (userGuess == computerGuess) {
-                wins++;
-                document.getElementById("wins").innerHTML="Wins: "+wins;
-                alert("WIN");
-                guesses = 10;
-                soFar = [];
-                console.log(wins);
-            }
-        
-            else {
-                guesses--;
-                document.getElementById("guesses").innerHTML="Guesses: " + guesses;
-                console.log(guesses);
-                
-            }
-
-
-
-            if(guesses == 0){
-                losses++;
-                document.getElementById("losses").innerHTML="Losses: " + losses;
-                alert("LOSE");
-                guesses = 10;
-                soFar = [];
-                console.log(losses);
-            }
-
-                
-
-            
-           
-            
-            document.getElementById("soFar").innerHTML="Guesses So Far: " + soFar;
-            console.log(soFar);
-            
-        }
-           
-
-    </script>
-
 
 </head>
 <body>
@@ -114,7 +22,8 @@ h1 {
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-3">
+
+            <div class="col-md-offset-3" id="game">
                 <li>
                     <ul>
                         <div><span id="wins">Wins: 0</span></div>
@@ -126,7 +35,7 @@ h1 {
                         <div><span id="guesses">Guesses: 10</span></div>
                     </ul>
                     <ul>
-                        <div><span id="soFar">Guesses So Far: </span> </div>
+                        <div><span id="soFat">Guesses So Far: </span> </div>
                     </ul>
                 </li>
             </div>
@@ -136,4 +45,5 @@ h1 {
   
    
 </body>
+
 </html>
