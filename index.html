@@ -9,94 +9,42 @@
    
     <title>Jackie's Guessing Game</title>
 
-    <style>
-body {
-    background-image: url(http://www.trendycrunch.com/wp-content/uploads/2017/08/psychic2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: fixed;
-}
-.container{
-    background-color: transparent;
-    color: #ffffff;
-}
-.jumbotron{
-    background-color: transparent;
-}
-h1 {
-    width: 100%;
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Lobster Two', cursive;
-}
-.row {
-    list-style-type: none;
-}
-    </style>
-    <script>
-        var alphabet = ("abcdefghijklmnopqrstuvwxyz");
-        var compChoices = alphabet.split("");
-        var wins = 0;
-        var losses = 0;
-        var guesses = 10;
-        var soFar = [];
-        var userGuess = null;
-
-        console.log(compChoices);
-        
-            
-        var computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
-        console.log(computerGuess);  
-              
-        document.onkeyupS = function(event){
-            var userGuess = event.key;
-            
-            console.log(userGuess);
-            
-            if (soFar.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess)) {
-                soFar[soFar.length]=userGuess;
-            }
-            if (userGuess == computerGuess) {
-                wins++;
-                document.getElementById("wins").innerHTML="Wins: "+wins;
-                alert("WIN");
-                computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
-                console.log(computerGuess);
-                guesses = 10;
-                soFar = [];
-                console.log(wins);
-            }
-        
-            else {
-                guesses--;
-                document.getElementById("guesses").innerHTML="Guesses: " + guesses;
-                console.log(guesses);
-                
-            }
-            if(guesses == 0){
-                losses++;
-                document.getElementById("losses").innerHTML="Losses: " + losses;
-                alert("LOSE");
-                computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
-                console.log(computerGuess);
-                guesses = 10;
-                soFar = [];
-                console.log(losses);
-            }
-                
-            
-           
-            
-            document.getElementById("soFar").innerHTML="Guesses So Far: " + soFar;
-            console.log(soFar);
-            
-        }
-           
-    </script>
-
-
 </head>
 <body>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">Guess what letter I'm thinking!</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" id="jumbotron-fluid">
+            
+
+            <div class="row">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <ul class="demo">
+                        <li>
+                            <div><span id="wins">Wins: 0</span></div>
+                        </li>
+                        <li>
+                            <div><span id="losses">Losses: 0</span></div>
+                        </li>
+                        <li>
+                            <div><span id="guesses">Guesses: 10</span></div>
+                        </li>
+                        <li>
+                            <div><span id="soFar">Guesses So Far: </span> </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--
     <div class="jumbotron" id="jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Guess what letter I'm thinking!</h1>
@@ -105,7 +53,7 @@ h1 {
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-3">
+            <div class="col-md-12">
                 <li>
                     <ul>
                         <div><span id="wins">Wins: 0</span></div>
@@ -123,8 +71,101 @@ h1 {
             </div>
         </div>
     </div>
+    -->
     
   
    
 </body>
+
+    <style>
+body {
+    background-image: url(http://www.trendycrunch.com/wp-content/uploads/2017/08/psychic2.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    position: fixed;
+}
+.container{
+    background-color: transparent;
+    color: #ffffff;
+}
+.jumbotron{
+    background-color: transparent;
+}
+h1 {
+    width: 100%;
+  
+    color: #ffffff;
+    font-family: 'Lobster Two', cursive;
+    padding: 5px;
+}
+ul.demo {
+    text-align: center;
+    list-style: none;
+}
+    </style>
+    <script>
+
+var alphabet = ("abcdefghijklmnopqrstuvwxyz");
+var compChoices = alphabet.split("");
+var wins = 0;
+var losses = 0;
+var guesses = 10;
+var soFar = [];
+var userGuess = null;
+
+
+
+var computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+console.log(computerGuess);  
+console.log(compChoices);      
+
+
+document.onkeyup = function(event){
+var userGuess = event.key;
+
+console.log(userGuess);
+
+if (soFar.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess)) {
+    soFar[soFar.length]=userGuess;
+}
+if (userGuess == computerGuess) {
+    wins++;
+    document.getElementById("wins").innerHTML="Wins: "+wins;
+    alert("WIN");
+    computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+    console.log(computerGuess);
+    guesses = 10;
+    soFar = [];
+    console.log(wins);
+}
+
+else {
+    guesses--;
+    document.getElementById("guesses").innerHTML="Guesses: " + guesses;
+    document.getElementById("soFar").innerHTML="Guesses So Far: " + soFar;
+    console.log(guesses);
+    
+}
+if(guesses == 0){
+    losses++;
+    document.getElementById("losses").innerHTML="Losses: " + losses;
+    alert("LOSE");
+    computerGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+    console.log(computerGuess);
+    guesses = 10;
+    soFar = [];
+    console.log(losses);
+}
+    
+
+
+
+
+console.log(soFar);
+
+}
+           
+    </script>
+
+
 </html>
